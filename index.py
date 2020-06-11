@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
-import matplotlib
+import matplotlib.pyplot as plt
+from pywaffle import Waffle
 import numpy as np
 
 st.write("""
@@ -49,10 +50,32 @@ st.pyplot()
 st.write("""
 Análise de disperção
 """)
-st.write("""
+st.text("""
 As variáveis utilizadas não representam uma disperção equivalente, porém em situações como
 a dengue, se correlacionarmos a temperatura com os casos são duas variáveis que fazem
 sentido a utilização do gráfico
 """)
 df.plot.scatter('Low', 'High')
+st.pyplot()
+
+# exemplo de Waffle
+st.write("""
+Gráfico de Waffle
+""")
+st.text("""
+Exemplo de gráfico de Waffle com a média das variáveis altas e baixas.
+""")
+
+fig = plt.figure(
+                FigureClass=Waffle,
+                rows=4,
+                columns=6,
+                values={ df['High'].mean(),
+                         df['Close'].mean()}, 
+                         icons='plane',
+                legend={
+                        'bbox_to_anchor': (1.1, 1)}
+                )
+ 
+fig.set_tight_layout(False)
 st.pyplot()
