@@ -44,3 +44,15 @@ Dados históricos de compras
 
 df.High.plot(figsize=(10, 2))
 st.pyplot()
+
+# Gráfico de disperção
+st.write("""
+Análise de disperção
+""")
+st.write("""
+As variáveis utilizadas não representam uma disperção equivalente, porém em situações como
+a dengue, se correlacionarmos a temperatura com os casos são duas variáveis que fazem
+sentido a utilização do gráfico
+""")
+df.plot.scatter('Low', 'High')
+st.pyplot()
